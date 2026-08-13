@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humanarties — Human-made art, verified.</title>
+  <meta name="description" content="Humanarties is a marketplace for original wall art from verified human artists. Join the list for early access and 10% off your first order.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top">Humanarties<span class="wordmark-dot">.</span></a>
+      <span class="header-tag">Human-made art, verified.</span>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero-content">
+        <p class="eyebrow">— now accepting founding patrons —</p>
+        <h1 class="hero-title">Art made by <em>real&nbsp;hands.</em><br>Not by a prompt.</h1>
+        <p class="hero-sub">Humanarties is a marketplace for original art from verified human artists. Join the list for early access and 10% off your first order.</p>
+
+        <form class="signup-form" data-form="hero" novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="company-hero">Company</label>
+            <input type="text" id="company-hero" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="signup-row">
+            <label class="visually-hidden" for="email-hero">Email address</label>
+            <input class="signup-input" type="email" id="email-hero" name="email" placeholder="you@email.com" required autocomplete="email">
+            <button class="btn btn-primary" type="submit">
+              <span class="btn-label">Get early access</span>
+            </button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="hero-microcopy">No spam. One email when we launch. Unsubscribe anytime.</p>
+      </div>
+
+      <div class="hero-stamp" aria-hidden="true">
+        <svg viewBox="0 0 220 220" class="stamp-svg">
+          <defs>
+            <path id="stampRing" d="M 110,110 m -85,0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" />
+          </defs>
+          <circle cx="110" cy="110" r="104" class="stamp-outer" />
+          <circle cx="110" cy="110" r="78" class="stamp-inner" />
+          <text class="stamp-text">
+            <textPath href="#stampRing" startOffset="0%">Humanarties &#8226; VERIFIED HUMAN&#8209;MADE &#8226; Humanarties &#8226; VERIFIED HUMAN&#8209;MADE &#8226;</textPath>
+          </text>
+          <g class="stamp-mark" transform="translate(110,110)">
+            <path d="M -22,14 C -22,-6 -10,-24 0,-24 C 10,-24 22,-6 22,14 C 22,22 14,26 0,26 C -14,26 -22,22 -22,14 Z" />
+            <path d="M -6,-14 C -10,-2 -10,10 -6,18" class="stamp-mark-detail" />
+            <path d="M 6,-14 C 10,-2 10,10 6,18" class="stamp-mark-detail" />
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- CONTRAST STATEMENT -->
+    <section class="contrast wrap">
+      <p class="contrast-text">Art feeds are filling up with images no one actually made. <strong>Humanarties is the opposite of that</strong> — every piece traces back to a real person, with a name, a story, and a hand that made it.</p>
+    </section>
+
+    <!-- PROMISE / PILLARS -->
+    <section class="pillars wrap" id="promise">
+      <h2 class="section-title">What we promise</h2>
+      <div class="pillar-grid">
+
+        <article class="pillar-card">
+          <svg class="pillar-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M14 50 C 20 40, 26 34, 34 26 C 40 20, 44 14, 50 14 C 52 14, 54 16, 52 20 C 48 28, 42 32, 36 38 C 28 46, 22 50, 14 50 Z" />
+            <path d="M14 50 C 12 54, 10 56, 8 58" class="pillar-icon-tail" />
+          </svg>
+          <h3>Real artists</h3>
+          <p>Every listing is made by a named, real person you can learn about — their story sits right next to their work.</p>
+        </article>
+
+        <article class="pillar-card">
+          <svg class="pillar-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 12 C 20 12, 12 20, 12 30 C 12 42, 24 48, 32 54 C 40 48, 52 42, 52 30 C 52 20, 44 12, 32 12 Z" />
+          </svg>
+          <h3>Fair support</h3>
+          <p>Artists are paid fairly for their work. Buying on Humanarties directly supports the person who made it.</p>
+        </article>
+
+        <article class="pillar-card">
+          <svg class="pillar-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="26" r="16" />
+            <path d="M22 38 L 16 54 L 32 46 L 48 54 L 42 38" />
+          </svg>
+          <h3>Verified, not just claimed</h3>
+          <p>Every artist goes through a lightweight verification process before their work is listed — see how below.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- VERIFICATION -->
+    <section class="verify wrap" id="how-it-works">
+      <h2 class="section-title">How verification works</h2>
+      <ol class="verify-steps">
+        <li>
+          <span class="step-mark">01</span>
+          <h3>Artist applies</h3>
+          <p>An artist submits their work and a bit of their story — who they are and how they made it.</p>
+        </li>
+        <li>
+          <span class="step-mark">02</span>
+          <h3>Identity &amp; originality checked</h3>
+          <p>We confirm the artist is a real person and the work is genuinely theirs before anything goes live.</p>
+        </li>
+        <li>
+          <span class="step-mark">03</span>
+          <h3>Work is stamped &amp; listed</h3>
+          <p>Verified work carries the Humanarties stamp, so you always know what you're buying — and from whom.</p>
+          <svg class="mini-stamp" viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="27" class="mini-stamp-outer" />
+            <circle cx="30" cy="30" r="19" class="mini-stamp-inner" />
+            <text x="30" y="34" class="mini-stamp-text" text-anchor="middle">H</text>
+          </svg>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FOUNDING PATRON CTA -->
+    <section class="patron" id="founding-patron">
+      <div class="wrap patron-inner">
+        <p class="eyebrow eyebrow-light">— founding patrons —</p>
+        <h2 class="patron-title">Be one of the first names on our list.</h2>
+        <p class="patron-sub">Founding patrons get 10% off their first order and early access before we open to everyone.</p>
+
+        <form class="signup-form signup-form--light" data-form="patron" novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="company-patron">Company</label>
+            <input type="text" id="company-patron" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="signup-row">
+            <label class="visually-hidden" for="email-patron">Email address</label>
+            <input class="signup-input" type="email" id="email-patron" name="email" placeholder="you@email.com" required autocomplete="email">
+            <button class="btn btn-light" type="submit">
+              <span class="btn-label">Join as a founding patron</span>
+            </button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq wrap" id="faq">
+      <h2 class="section-title">Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What does "authenticated human" actually mean?</summary>
+          <p>It means every artist on Humanarties has gone through our verification process — we confirm they're a real person and that the work is genuinely their own before it's ever listed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>When do you launch?</summary>
+          <p>Soon. We're validating demand before we build out the full store, so we don't have an exact date yet — the waitlist will be the first to know.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Will I be charged anything now?</summary>
+          <p>No. Joining the list costs nothing and doesn't create an account or order — it just reserves your spot and your 10% founding-patron discount.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do artists get verified?</summary>
+          <p>Artists apply with their work and background, and we check their identity and the originality of the piece before it goes live. We'll share more detail on the process as we get closer to launch.</p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <p class="wordmark">Humanarties<span class="wordmark-dot">.</span></p>
+        <p class="footer-tag">Human-made art, verified.</p>
+      </div>
+
+      <form class="signup-form signup-form--footer" data-form="footer" novalidate>
+        <div class="hp-field" aria-hidden="true">
+          <label for="company-footer">Company</label>
+          <input type="text" id="company-footer" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="signup-row">
+          <label class="visually-hidden" for="email-footer">Email address</label>
+          <input class="signup-input" type="email" id="email-footer" name="email" placeholder="you@email.com" required autocomplete="email">
+          <button class="btn btn-primary" type="submit">
+            <span class="btn-label">Don't miss the launch</span>
+          </button>
+        </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="footer-legal">&copy; 2026 Humanarties. <a href="privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

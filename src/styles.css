@@ -1,0 +1,446 @@
+/* ============================================================
+   HUMANARTIES — token system
+   Palette chosen for a warm, artisanal "human-made" feel,
+   distinct from the generic cream/terracotta AI-page default.
+   ============================================================ */
+
+:root {
+  /* color */
+  --paper: #F2EBDD;        /* parchment background */
+  --paper-deep: #E7DBC0;   /* card / recessed surface */
+  --ink: #262019;          /* primary text, warm near-black */
+  --ink-soft: #5A5145;     /* secondary text */
+  --clay: #B5482A;         /* primary accent / CTA */
+  --clay-deep: #8F3820;    /* hover state for clay */
+  --moss: #5C6B4F;         /* secondary accent */
+  --gold: #C89B3C;         /* signature / stamp accent */
+  --line: #D8C9A8;         /* hairline borders on paper */
+
+  /* type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* layout */
+  --wrap: 1120px;
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; margin: 0 0 0.5em; color: var(--ink); }
+
+em { font-style: italic; color: var(--clay); }
+
+a { color: var(--clay); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.wordmark-dot { color: var(--clay); }
+
+.header-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+  padding: 72px 24px 88px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--clay-deep);
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+.eyebrow-light { color: var(--gold); }
+
+.hero-title {
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: 0 0 32px;
+}
+
+.hero-microcopy {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 12px;
+}
+
+.hero-stamp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stamp-svg {
+  width: min(280px, 80%);
+  transform: rotate(-6deg);
+  color: var(--clay-deep);
+}
+
+.stamp-outer, .stamp-inner {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.stamp-text {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  fill: currentColor;
+}
+
+.stamp-mark {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.stamp-mark-detail { stroke-width: 1.4; }
+
+/* ---------- signup form (shared) ---------- */
+
+.signup-form { max-width: 480px; }
+
+.signup-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.signup-input {
+  flex: 1 1 220px;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+}
+
+.signup-input::placeholder { color: #A79E8C; }
+
+.btn {
+  padding: 14px 22px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--clay); color: #FBF6EC; }
+.btn-primary:hover { background: var(--clay-deep); }
+
+.btn-light { background: var(--gold); color: var(--ink); }
+.btn-light:hover { background: #b6872f; }
+
+.form-status {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  min-height: 1.4em;
+  margin: 10px 0 0;
+  color: var(--moss);
+}
+
+.form-status[data-state="error"] { color: var(--clay-deep); }
+
+/* honeypot field — hidden from real visitors, present for bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- contrast statement ---------- */
+
+.contrast {
+  padding: 8px 24px 80px;
+}
+
+.contrast-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  line-height: 1.4;
+  max-width: 62ch;
+  color: var(--ink-soft);
+}
+
+.contrast-text strong { color: var(--ink); font-weight: 600; }
+
+/* ---------- section title ---------- */
+
+.section-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  margin-bottom: 40px;
+}
+
+/* ---------- pillars ---------- */
+
+.pillars { padding: 60px 24px 80px; }
+
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.pillar-card {
+  background: var(--paper-deep);
+  padding: 32px 28px 34px;
+  border-radius: var(--radius);
+  /* deckle / torn-paper edge */
+  clip-path: polygon(
+    0% 2%, 3% 0%, 97% 1%, 100% 3%,
+    99% 97%, 96% 100%, 4% 99%, 1% 96%
+  );
+}
+
+.pillar-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  fill: none;
+  stroke: var(--clay-deep);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pillar-card:nth-child(2) .pillar-icon { stroke: var(--moss); }
+.pillar-card:nth-child(3) .pillar-icon { stroke: var(--gold); }
+
+.pillar-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.pillar-card p { color: var(--ink-soft); margin: 0; font-size: 0.98rem; }
+
+/* ---------- verification steps ---------- */
+
+.verify { padding: 60px 24px 90px; }
+
+.verify-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.verify-steps li {
+  padding: 0 28px;
+  position: relative;
+}
+
+.verify-steps li + li {
+  border-left: 1px dashed var(--line);
+}
+
+.step-mark {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.verify-steps h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.verify-steps p { color: var(--ink-soft); font-size: 0.96rem; margin: 0; }
+
+.mini-stamp { width: 46px; height: 46px; margin-top: 16px; }
+.mini-stamp-outer, .mini-stamp-inner { fill: none; stroke: var(--clay-deep); stroke-width: 1.3; }
+.mini-stamp-text { font-family: var(--font-mono); font-size: 15px; fill: var(--clay-deep); }
+
+/* ---------- founding patron ---------- */
+
+.patron {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 84px 24px;
+}
+
+.patron-inner { max-width: 620px; }
+
+.patron-title {
+  color: var(--paper);
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+}
+
+.patron-sub {
+  color: #CDC2AC;
+  font-size: 1.05rem;
+  max-width: 48ch;
+  margin: 0 0 30px;
+}
+
+.signup-form--light .signup-input {
+  background: #33291E;
+  border-color: #4A3D2C;
+  color: var(--paper);
+}
+
+.signup-form--light .signup-input::placeholder { color: #8C7F68; }
+.signup-form--light .form-status { color: #CDC2AC; }
+
+/* ---------- FAQ ---------- */
+
+.faq { padding: 70px 24px 100px; }
+
+.faq-list { max-width: 720px; }
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::before {
+  content: '+';
+  display: inline-block;
+  width: 1.2em;
+  color: var(--clay);
+  font-family: var(--font-mono);
+}
+
+.faq-item[open] summary::before { content: '–'; }
+
+.faq-item p {
+  color: var(--ink-soft);
+  margin: 14px 0 0 1.2em;
+  max-width: 60ch;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  background: var(--paper-deep);
+  border-top: 1px solid var(--line);
+  padding: 56px 24px 40px;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.footer-brand .wordmark { display: block; margin-bottom: 4px; }
+.footer-tag { font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); margin: 0; }
+
+.footer-legal {
+  grid-column: 1 / -1;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  margin-top: 32px;
+}
+
+.footer-legal a { color: var(--ink-soft); text-decoration: underline; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-top: 48px; }
+  .hero-stamp { order: -1; margin-bottom: 8px; }
+  .stamp-svg { width: 180px; }
+  .pillar-grid { grid-template-columns: 1fr; }
+  .verify-steps { grid-template-columns: 1fr; gap: 32px; }
+  .verify-steps li + li { border-left: none; border-top: 1px dashed var(--line); padding-top: 28px; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
