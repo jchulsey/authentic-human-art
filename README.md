@@ -74,19 +74,4 @@ proxied through to the Function.
 4. Push to your connected branch — the GitHub Action deploys both the static
    site and the linked Function automatically.
 
-## Design notes
-
-- **Palette / type / layout rationale** and the full section-by-section copy
-  brief live in `landing-page-design-outline.md` (shared earlier in this
-  project). This scaffold implements that plan directly — CSS custom
-  properties in `styles.css` are the single source of truth for color and
-  type, so re-theming once real branding lands is a matter of editing the
-  `:root` block, not rebuilding the page.
-- The circular "stamp" motif (hero + verification step 3) is the page's
-  signature element — it ties the visual language directly to the
-  verification/provenance story, and doubles as a placeholder for a future
-  real logo mark.
-- All imagery is currently illustrative (inline SVG) rather than photography,
-  per the "placeholder imagery for now" direction — this also sidesteps the
-  irony of using stock or AI-generated photos on a page about human-made work.
 
