@@ -90,11 +90,3 @@ proxied through to the Function.
   per the "placeholder imagery for now" direction — this also sidesteps the
   irony of using stock or AI-generated photos on a page about human-made work.
 
-## Open items before launch
-
-- [ ] Finalize brand name, logo, and domain (replace "Humanarties" throughout)
-- [ ] Replace `hello@example.com` placeholder in `privacy.html`
-- [ ] Decide whether to send a confirmation email on signup (e.g. via Azure
-      Communication Services or SendGrid) — not required for MVP validation
-- [ ] Add basic abuse/rate-limiting on `/api/subscribe` if signups spike
-- [ ] Swap the working "10%" discount / founding-patron terms if they change
