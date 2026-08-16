@@ -51,10 +51,12 @@ def _error_response(message: str, status_code: int, exc: Exception | None = None
 def _get_table_client():
     connection_string = os.environ["AZURE_STORAGE_CONNECTION_STRING"]
     service_client = TableServiceClient.from_connection_string(connection_string)
-    table_client = service_client.get_table_client(TABLE_NAME)
-    # Safe to call every invocation — no-ops if the table already exists.
-    table_client.create_table_if_not_exists()
-    return table_client
+    # create_table_if_not_exists lives on TableServiceClient, not TableClient —
+    # calling it on the table client itself is version-dependent and failed
+    # with "'TableClient' object has no attribute 'create_table_if_not_exists'"
+    # on the SDK version that got installed during the build.
+    service_client.create_table_if_not_exists(TABLE_NAME)
+    return service_client.get_table_client(TABLE_NAME)
 
 
 @app.route(route="subscribe", methods=["POST"])
@@ -92,7 +94,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
     except KeyError as exc:
         logging.exception("AZURE_STORAGE_CONNECTION_STRING is not configured.")
         return _error_response(
-            "Not configured. Something went wrong on our end. Please try again shortly.", 500, exc
+            "Something went wrong on our end. Please try again shortly.", 500, exc
         )
     except Exception as exc:
         # Catches malformed connection strings, auth failures, network issues
@@ -100,7 +102,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
         # "the setting is missing."
         logging.exception("Failed to create the Table Storage client.")
         return _error_response(
-            "Table. Something went wrong on our end. Please try again shortly.", 500, exc
+            "Something went wrong on our end. Please try again shortly.", 500, exc
         )
 
     row_key = hashlib.sha256(email.encode("utf-8")).hexdigest()
@@ -119,7 +121,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
     except Exception as exc:
         logging.exception("Failed to write subscriber entity.")
         return _error_response(
-            "Subscriber. Something went wrong on our end. Please try again shortly.", 500, exc
+            "Something went wrong on our end. Please try again shortly.", 500, exc
         )
 
     return _json_response(
