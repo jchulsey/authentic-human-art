@@ -1,5 +1,5 @@
 """
-Humanarties — email capture API.
+Humart — email capture API.
 
 Single endpoint, POST /api/subscribe, called from the landing page's
 signup forms (hero, founding-patron band, and footer).
@@ -25,6 +25,12 @@ EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 TABLE_NAME = "Subscribers"
 ALLOWED_SOURCES = {"hero", "patron", "footer", "unknown"}
 
+# TEMPORARY: set DEBUG_ERRORS=true as an app setting to include the real
+# exception type/message in 500 responses while troubleshooting. Turn this
+# back off (or delete the setting) once things are working — error internals
+# shouldn't be exposed to the public in normal operation.
+DEBUG_ERRORS = os.environ.get("DEBUG_ERRORS", "false").strip().lower() == "true"
+
 
 def _json_response(body: dict, status_code: int) -> func.HttpResponse:
     return func.HttpResponse(
@@ -33,6 +39,13 @@ def _json_response(body: dict, status_code: int) -> func.HttpResponse:
         mimetype="application/json",
         headers={"Cache-Control": "no-store"},
     )
+
+
+def _error_response(message: str, status_code: int, exc: Exception | None = None) -> func.HttpResponse:
+    body = {"message": message}
+    if DEBUG_ERRORS and exc is not None:
+        body["debug"] = f"{type(exc).__name__}: {exc}"
+    return _json_response(body, status_code)
 
 
 def _get_table_client():
@@ -76,11 +89,18 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         table_client = _get_table_client()
-    except KeyError:
+    except KeyError as exc:
         logging.exception("AZURE_STORAGE_CONNECTION_STRING is not configured.")
-        return _json_response(
-            {"message": "Hmm something went wrong on our end. Please try again shortly."},
-            500,
+        return _error_response(
+            "Something went wrong on our end. Please try again shortly.", 500, exc
+        )
+    except Exception as exc:
+        # Catches malformed connection strings, auth failures, network issues
+        # talking to the storage account, etc. — anything that isn't simply
+        # "the setting is missing."
+        logging.exception("Failed to create the Table Storage client.")
+        return _error_response(
+            "Something went wrong on our end. Please try again shortly.", 500, exc
         )
 
     row_key = hashlib.sha256(email.encode("utf-8")).hexdigest()
@@ -96,11 +116,10 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         table_client.upsert_entity(entity=entity)
-    except Exception:
+    except Exception as exc:
         logging.exception("Failed to write subscriber entity.")
-        return _json_response(
-            {"message": "Beep boop. Something went wrong on our end. Please try again shortly."},
-            500,
+        return _error_response(
+            "Something went wrong on our end. Please try again shortly.", 500, exc
         )
 
     return _json_response(
