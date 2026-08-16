@@ -99,7 +99,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
     except Exception:
         logging.exception("Failed to write subscriber entity.")
         return _json_response(
-            {"message": "Something went wrong on our end. Please try again shortly."},
+            {"message": "Beep boop. Something went wrong on our end. Please try again shortly."},
             500,
         )
 
