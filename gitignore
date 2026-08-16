@@ -25,6 +25,7 @@ swa-cli.config.json
 .idea/
 .DS_Store
 Thumbs.db
+.mailmap
 
 # ---- Node (if any tooling gets added later) ----
 node_modules/
