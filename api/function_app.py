@@ -79,7 +79,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
     except KeyError:
         logging.exception("AZURE_STORAGE_CONNECTION_STRING is not configured.")
         return _json_response(
-            {"message": "Something went wrong on our end. Please try again shortly."},
+            {"message": "Hmm something went wrong on our end. Please try again shortly."},
             500,
         )
 
