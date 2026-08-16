@@ -1,5 +1,5 @@
 """
-Humart — email capture API.
+Humanarties — email capture API.
 
 Single endpoint, POST /api/subscribe, called from the landing page's
 signup forms (hero, founding-patron band, and footer).
@@ -92,7 +92,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
     except KeyError as exc:
         logging.exception("AZURE_STORAGE_CONNECTION_STRING is not configured.")
         return _error_response(
-            "Something went wrong on our end. Please try again shortly.", 500, exc
+            "Not configured. Something went wrong on our end. Please try again shortly.", 500, exc
         )
     except Exception as exc:
         # Catches malformed connection strings, auth failures, network issues
@@ -100,7 +100,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
         # "the setting is missing."
         logging.exception("Failed to create the Table Storage client.")
         return _error_response(
-            "Something went wrong on our end. Please try again shortly.", 500, exc
+            "Table. Something went wrong on our end. Please try again shortly.", 500, exc
         )
 
     row_key = hashlib.sha256(email.encode("utf-8")).hexdigest()
@@ -119,7 +119,7 @@ def subscribe(req: func.HttpRequest) -> func.HttpResponse:
     except Exception as exc:
         logging.exception("Failed to write subscriber entity.")
         return _error_response(
-            "Something went wrong on our end. Please try again shortly.", 500, exc
+            "Subscriber. Something went wrong on our end. Please try again shortly.", 500, exc
         )
 
     return _json_response(
