@@ -1,8 +1,8 @@
 # Humanarties — landing page
 
 A single-scroll landing page validating demand for **Human art**, a marketplace for
-original wall art from verified human artists. Built for Azure Static Web Apps
-with a Python Azure Function handling email signups.ƒ
+original art from verified human artists. Built for Azure Static Web Apps
+with a Python Azure Function handling email signups.
 
 ## Project structure
 
@@ -44,8 +44,8 @@ You'll need:
 Steps:
 
 ```bash
-# 1. Copy the local settings template
-cp api/local.settings.json.example api/local.settings.json
+# 1. Confirm the settings file
+api/local.settings.json
 
 # 2. Install Python deps
 cd api && pip install -r requirements.txt && cd ..

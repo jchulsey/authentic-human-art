@@ -1,0 +1,36 @@
+# ---- Azure Functions (Python) ----
+api/local.settings.json
+api/.python_packages/
+api/__pycache__/
+api/**/__pycache__/
+api/*.pyc
+api/.venv/
+api/venv/
+
+# ---- Python (general) ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ---- Azure Static Web Apps CLI ----
+swa-cli.config.json
+.swa/
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Node (if any tooling gets added later) ----
+node_modules/
+npm-debug.log*
+
+# ---- Logs & env ----
+*.log
+.env
+.env.local
